@@ -1,8 +1,8 @@
-import { elements, backImg } from './resources.js';
+import { elements, images } from './resources.js';
 import { changeImg } from './changeHandler.js';
 
-let i = 0;
-const x = backImg.length - backImg.length%3 - 1;
+let currentPage = 0;
+const numberOfImages = images.length - images.length%3 - 1;
 
 const attachEvents = () => {
   elements.btn.left.onclick = () => showPrevious();
@@ -18,24 +18,24 @@ const attachEvents = () => {
 };
 
 const showPrevious = () => {
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.remove('active-page');
-  (i === 0) ? i = x-2 : i-=3;
-  changeImg(i);
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.add('active-page');
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
+  (currentPage === 0) ? currentPage = numberOfImages-2 : currentPage-=3;
+  changeImg(currentPage);
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
 };
 
 const showNext = () => {
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.remove('active-page');
-  (i === x-2) ? i = 0 : i+=3;
-  changeImg(i);
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.add('active-page');
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
+  (currentPage === numberOfImages-2) ? currentPage = 0 : currentPage+=3;
+  changeImg(currentPage);
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
 };
 
 const showPage = (page) => {
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.remove('active-page');
-  i = page;
-  changeImg(i);
-  document.querySelector('.pages'+(Math.floor(i/3)+1)).classList.add('active-page');
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
+  currentPage = page;
+  changeImg(currentPage);
+  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
 };
 
 export { attachEvents, showPrevious, showNext, showPage };

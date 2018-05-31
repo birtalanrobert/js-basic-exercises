@@ -1,13 +1,13 @@
-const backImg = [];
-backImg[0] = "../images/1.jpg";
-backImg[1] = "../images/2.png";
-backImg[2] = "../images/3.jpg";
-backImg[3] = "../images/4.jpg";
-backImg[4] = "../images/5.jpg";
-backImg[5] = "../images/6.png";
-backImg[6] = "../images/7.jpg";
-backImg[7] = "../images/8.jpg";
-backImg[8] = "../images/9.png";
+const images = [];
+images[0] = "../images/1.jpg";
+images[1] = "../images/2.png";
+images[2] = "../images/3.jpg";
+images[3] = "../images/4.jpg";
+images[4] = "../images/5.jpg";
+images[5] = "../images/6.png";
+images[6] = "../images/7.jpg";
+images[7] = "../images/8.jpg";
+images[8] = "../images/9.png";
 
 const elements = {
   images: {
@@ -22,4 +22,4 @@ const elements = {
   pages: document.querySelector('.pages-container')
 };
 
-export {backImg, elements};
+export {images, elements};
