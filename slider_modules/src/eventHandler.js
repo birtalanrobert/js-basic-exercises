@@ -17,25 +17,31 @@ const attachEvents = () => {
   };
 };
 
-const showPrevious = () => {
+const removeActivePage = () => {
   document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
-  (currentPage === 0) ? currentPage = numberOfImages-2 : currentPage-=3;
+};
+
+const addActivePage = () => {
   changeImg(currentPage);
   document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
+};
+
+const showPrevious = () => {
+  removeActivePage();
+  (currentPage === 0) ? currentPage = numberOfImages-2 : currentPage-=3;
+  addActivePage();
 };
 
 const showNext = () => {
-  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
+  removeActivePage();
   (currentPage === numberOfImages-2) ? currentPage = 0 : currentPage+=3;
-  changeImg(currentPage);
-  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
+  addActivePage();
 };
 
 const showPage = (page) => {
-  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.remove('active-page');
+  removeActivePage();
   currentPage = page;
-  changeImg(currentPage);
-  document.querySelector('.pages'+(Math.floor(currentPage/3)+1)).classList.add('active-page');
+  addActivePage();
 };
 
 export { attachEvents, showPrevious, showNext, showPage };
